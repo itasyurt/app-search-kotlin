@@ -1,4 +1,7 @@
 rootProject.name = "app-search-kotlin"
+plugins {
+    `gradle-enterprise`
+}
 
 gradleEnterprise {
     buildScan {
