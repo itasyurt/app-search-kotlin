@@ -3,6 +3,10 @@ plugins {
     kotlin("jvm") version "1.3.72"
     jacoco
 }
+buildScan {
+  licenseAgreementUrl = "https://gradle.com/terms-of-service"
+  licenseAgree = "yes"
+}
 
 group = "org.itasyurt"
 version = "0.1-SNAPSHOT"
