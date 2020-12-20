@@ -2,12 +2,15 @@ plugins {
     java
     kotlin("jvm") version "1.3.72"
     jacoco
+    maven
+    `maven-publish`
 }
 
-group = "org.itasyurt"
-version = "0.1-SNAPSHOT"
+group = "com.github.itasyurt"
+version = "7.8.1-alpha001"
 
 repositories {
+    mavenLocal()
     mavenCentral()
     jcenter()
 }
@@ -92,6 +95,21 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "11"
+    }
+}
+java {
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.itasyurt"
+            artifactId = "app-search-kotlin"
+            version = "7.8.1-alpha001"
+
+            from(components["java"])
+        }
     }
 }
 

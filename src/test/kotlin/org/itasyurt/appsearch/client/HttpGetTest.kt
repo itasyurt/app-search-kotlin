@@ -5,8 +5,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode
 import org.apache.http.entity.ContentType
 import org.apache.http.entity.StringEntity
 import org.apache.http.impl.client.HttpClients
-import org.itasyurt.appsearch.client.domain.mapper
-import org.itasyurt.appsearch.client.api.util.http.HttpGetRequestWithBody
+import com.github.itasyurt.appsearch.client.domain.mapper
+import com.github.itasyurt.appsearch.client.api.util.http.HttpGetRequestWithBody
 import org.junit.Assert
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
