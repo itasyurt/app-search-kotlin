@@ -2,12 +2,19 @@
 
 package org.itasyurt.appsearch.client.runner
 
-import org.itasyurt.appsearch.client.DefaultClient
-import org.itasyurt.appsearch.client.domain.*
-import org.itasyurt.appsearch.client.domain.Function
+import com.github.itasyurt.appsearch.client.DefaultClient
+import com.github.itasyurt.appsearch.client.domain.*
+import com.github.itasyurt.appsearch.client.domain.Function
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.util.*
+import kotlin.Array
+import kotlin.Exception
+import kotlin.Int
+import kotlin.Pair
+import kotlin.String
+import kotlin.Suppress
+import kotlin.let
 
 const val apiKey ="someKey"
 fun main() {
