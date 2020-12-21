@@ -4,10 +4,11 @@ plugins {
     jacoco
     maven
     `maven-publish`
+    signing
 }
 
 group = "com.github.itasyurt"
-version = "7.8.1-alpha001"
+version = "7.8.1-alpha002"
 
 repositories {
     mavenLocal()
@@ -23,7 +24,7 @@ buildscript {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.+")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.4")
     implementation("org.apache.httpcomponents:httpclient:4.5.13")
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -97,19 +98,90 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         jvmTarget = "11"
     }
 }
-java {
-    withSourcesJar()
-}
+
 
 publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = "com.github.itasyurt"
             artifactId = "app-search-kotlin"
-            version = "7.8.1-alpha001"
+            version = "7.8.1-alpha002"
 
             from(components["java"])
         }
     }
 }
 
+tasks {
+    val sourcesJar by creating(Jar::class) {
+        archiveClassifier.set("sources")
+        from(sourceSets.main.get().allSource)
+    }
+
+    val javadocJar by creating(Jar::class) {
+        dependsOn.add(javadoc)
+        archiveClassifier.set("javadoc")
+        from(javadoc)
+    }
+
+    artifacts {
+        archives(sourcesJar)
+        archives(javadocJar)
+        archives(jar)
+    }
+
+}
+signing {
+    sign(configurations.archives.get())
+}
+
+
+tasks.named<Upload>("uploadArchives") {
+    repositories {
+        withConvention(MavenRepositoryHandlerConvention::class) {
+            mavenDeployer {
+                beforeDeployment { signing.signPom(this) }
+
+                val nexusUsername:String by project
+                val nexusPassword:String by project
+
+                withGroovyBuilder {
+                    "repository"("url" to "https://oss.sonatype.org/service/local/staging/deploy/maven2") {
+                        "authentication"("userName" to nexusUsername, "password" to nexusPassword)
+                    }
+                    "snapshotRepository"("url" to "https://oss.sonatype.org/content/repositories/snapshots") {
+                        "authentication"("userName" to nexusUsername, "password" to nexusPassword)
+                    }
+                    "pom" {
+                        "project" {
+                            "licenses" {
+                                "license" {
+                                    setProperty("name", "The Apache Software License, Version 2.0")
+                                    setProperty("url", "http://www.apache.org/licenses/LICENSE-2.0.txt")
+                                }
+                            }
+
+                            setProperty("packaging", "jar")
+                            setProperty("name", "App Search Kotlin")
+                            setProperty("description", "Elastic App Search Kotlin Client")
+                            setProperty("url","https://github.com/itasyurt/app-search-kotlin/")
+                            "scm" {
+                                setProperty("connection", "scm:git:https://github.com/itasyurt/app-search-kotlin.git")
+                                setProperty("url","https://github.com/itasyurt/app-search-kotlin/")
+                            }
+                            "developers" {
+                                "developer"{
+                                    setProperty("name", "Ibrahim Tasyurt")
+                                }
+                            }
+
+
+                        }
+                    }
+
+                }
+
+            }
+        }
+    }
+}
