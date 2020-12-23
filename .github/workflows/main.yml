@@ -31,11 +31,11 @@ jobs:
       - name: Decode
         run: |
           echo "${{secrets.SEC_RING_B64}}" > secring.gpg.b64
-          base64 -d secring.gpg.b64 > ~/.gradle/secring.gpg
+          base64 -d secring.gpg.b64 > secring.gpg
       
       #Publish project
       - name: Publish
-        run: ./gradlew clean build publish -Psigning.keyId=${{secrets.SIGNING_KEY_ID}} -Psigning.password={{secrets.SIGNING_PASSWORD}} -Psigning.secretKeyRingFile=$(echo ~/.gradle/secring.gpg)
+        run: ./gradlew clean build publish -Psigning.keyId=${{secrets.SIGNING_KEY_ID}} -Psigning.password={{secrets.SIGNING_PASSWORD}} -Psigning.secretKeyRingFile=$(echo secring.gpg)
         env:
           nexusUserName: ${{secrets.NEXUSUSERNAME}}
           nexusPassword: ${{secrets.NEXUSPASSWORD}}
