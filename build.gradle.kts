@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.github.itasyurt"
-version = "7.8.1-alpha002"
+version = "7.8.1-alpha003"
 
 repositories {
     mavenLocal()
@@ -107,9 +107,9 @@ java {
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
-            groupId = "com.github.itasyurt"
+            groupId =  project.group.toString()
             artifactId = "app-search-kotlin"
-            version = "7.8.1-alpha002"
+            version = project.version.toString()
 
             from(components["java"])
 
