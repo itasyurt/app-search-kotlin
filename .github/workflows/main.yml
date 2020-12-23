@@ -37,5 +37,5 @@ jobs:
       - name: Publish
         run: ./gradlew clean build publish -Psigning.keyId=${{secrets.SIGNING_KEY_ID}} -Psigning.password={{secrets.SIGNING_PASSWORD}} -Psigning.secretKeyRingFile=$(echo secring.gpg)
         env:
-          nexusUserName: ${{secrets.NEXUSUSERNAME}}
+          nexusUsername: ${{secrets.NEXUSUSERNAME}}
           nexusPassword: ${{secrets.NEXUSPASSWORD}}
