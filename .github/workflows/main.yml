@@ -1,6 +1,8 @@
 name: App Search Kotlin Release Workflow
 
-on: [release]
+on: 
+  release:
+    create:
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,10 +26,6 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
     
-      #Build project
-      - name: Build with Gradle
-        run: ./gradlew build
-
       #After decoding the secret key, place the file in ~ /. Gradle/ secring.gpg
       - name: Decode
         run: |
@@ -36,7 +34,7 @@ jobs:
       
       #Publish project
       - name: Publish
-        run: ./gradlew publish -Psigning.keyId=${{secrets.SIGNING_KEY_ID}} -Psigning.password={{secrets.SIGNING_PASSWORD}} -Psigning.secretKeyRingFile=$(echo ~/.gradle/secring.gpg)
+        run: ./gradlew clean build publish -Psigning.keyId=${{secrets.SIGNING_KEY_ID}} -Psigning.password={{secrets.SIGNING_PASSWORD}} -Psigning.secretKeyRingFile=$(echo ~/.gradle/secring.gpg)
         env:
-          OSSRH_USERNAME: ${{secrets.NEXUSUSERNAME}}
-          OSSRH_PASSWORD: ${{secrets.NEXUSPASSWORD}}
+          nexusUserName: ${{secrets.NEXUSUSERNAME}}
+          nexusPassword: ${{secrets.NEXUSPASSWORD}}
