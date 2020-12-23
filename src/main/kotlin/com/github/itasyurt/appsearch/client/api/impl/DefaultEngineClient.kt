@@ -1,6 +1,6 @@
 package com.github.itasyurt.appsearch.client.api.impl
 
-import com.github.itasyurt.appsearch.api.EngineClient
+import com.github.itasyurt.appsearch.client.api.EngineClient
 import com.github.itasyurt.appsearch.client.api.util.util.json.toJson
 import com.github.itasyurt.appsearch.client.domain.Engine
 import com.github.itasyurt.appsearch.client.domain.EnginesResponse

@@ -2,7 +2,7 @@ package com.github.itasyurt.appsearch.client.api.impl
 
 import com.fasterxml.jackson.core.type.TypeReference
 import org.apache.http.client.methods.CloseableHttpResponse
-import com.github.itasyurt.appsearch.api.SchemaClient
+import com.github.itasyurt.appsearch.client.api.SchemaClient
 import com.github.itasyurt.appsearch.client.domain.FieldType
 import com.github.itasyurt.appsearch.client.domain.Schema
 import com.github.itasyurt.appsearch.client.domain.mapper

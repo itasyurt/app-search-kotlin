@@ -3,7 +3,7 @@ package com.github.itasyurt.appsearch.client.api.impl
 import com.fasterxml.jackson.databind.node.ArrayNode
 import com.fasterxml.jackson.databind.node.ObjectNode
 import org.apache.http.client.methods.CloseableHttpResponse
-import com.github.itasyurt.appsearch.api.DocumentClient
+import com.github.itasyurt.appsearch.client.api.DocumentClient
 import com.github.itasyurt.appsearch.client.api.util.util.json.convertToMap
 import com.github.itasyurt.appsearch.client.domain.*
 

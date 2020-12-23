@@ -1,6 +1,6 @@
 package com.github.itasyurt.appsearch.client
 
-import com.github.itasyurt.appsearch.api.*
+import com.github.itasyurt.appsearch.client.api.*
 
 interface Client {
 
@@ -11,5 +11,5 @@ interface Client {
     val search: SearchClient
     val suggestions: SuggestionsClient
     val synonyms: SynonymsClient
-    val curations:CurationsClient
+    val curations: CurationsClient
 }

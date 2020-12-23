@@ -1,4 +1,4 @@
-package com.github.itasyurt.appsearch.api
+package com.github.itasyurt.appsearch.client.api
 
 import com.github.itasyurt.appsearch.client.domain.ListSynoynmsResponse
 import com.github.itasyurt.appsearch.client.domain.Pagination

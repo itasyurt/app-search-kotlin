@@ -1,7 +1,7 @@
 package com.github.itasyurt.appsearch.client.api.impl
 
 import com.fasterxml.jackson.databind.JsonNode
-import com.github.itasyurt.appsearch.api.SuggestionsClient
+import com.github.itasyurt.appsearch.client.api.SuggestionsClient
 import com.github.itasyurt.appsearch.client.api.util.util.json.convertToMap
 import com.github.itasyurt.appsearch.client.domain.SuggestionsRequest
 import com.github.itasyurt.appsearch.client.domain.SuggestionsResponse

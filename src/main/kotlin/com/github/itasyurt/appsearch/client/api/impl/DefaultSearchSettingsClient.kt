@@ -1,7 +1,7 @@
 package com.github.itasyurt.appsearch.client.api.impl
 
 import org.apache.http.client.methods.CloseableHttpResponse
-import com.github.itasyurt.appsearch.api.SearchSettingsClient
+import com.github.itasyurt.appsearch.client.api.SearchSettingsClient
 import com.github.itasyurt.appsearch.client.api.util.util.json.toJson
 import com.github.itasyurt.appsearch.client.domain.SearchSettings
 
