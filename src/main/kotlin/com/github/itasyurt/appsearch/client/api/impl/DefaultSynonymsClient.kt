@@ -1,7 +1,7 @@
 package com.github.itasyurt.appsearch.client.api.impl
 
 import org.apache.http.client.methods.CloseableHttpResponse
-import com.github.itasyurt.appsearch.api.SynonymsClient
+import com.github.itasyurt.appsearch.client.api.SynonymsClient
 import com.github.itasyurt.appsearch.client.domain.ListSynoynmsResponse
 import com.github.itasyurt.appsearch.client.domain.Pagination
 import com.github.itasyurt.appsearch.client.domain.SynonymSet

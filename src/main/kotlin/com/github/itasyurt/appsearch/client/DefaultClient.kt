@@ -1,7 +1,7 @@
 package com.github.itasyurt.appsearch.client
 
 
-import com.github.itasyurt.appsearch.api.*
+import com.github.itasyurt.appsearch.client.api.*
 import com.github.itasyurt.appsearch.client.api.impl.*
 
 class DefaultClient(val url: String, val apiKey: String) : Client {
@@ -16,7 +16,7 @@ class DefaultClient(val url: String, val apiKey: String) : Client {
         get() = DefaultDocumentClient(settings)
     override val schemas: SchemaClient
         get() = DefaultSchemaClient(settings)
-    override val searchSettings:SearchSettingsClient
+    override val searchSettings: SearchSettingsClient
         get() = DefaultSearchSettingsClient(settings)
     override val search: SearchClient
         get() = DefaultSearchClient(settings)
