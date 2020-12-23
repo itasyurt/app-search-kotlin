@@ -2,8 +2,8 @@ name: App Search Kotlin Release Workflow
 
 on: 
   release:
-    type:
-      -create
+    types:
+      - created
 jobs:
   build:
     runs-on: ubuntu-latest
