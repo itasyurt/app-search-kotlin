@@ -99,89 +99,67 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     }
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
 
 publishing {
     publications {
-        create<MavenPublication>("maven") {
+        create<MavenPublication>("mavenJava") {
             groupId = "com.github.itasyurt"
             artifactId = "app-search-kotlin"
             version = "7.8.1-alpha002"
 
             from(components["java"])
-        }
-    }
-}
 
-tasks {
-    val sourcesJar by creating(Jar::class) {
-        archiveClassifier.set("sources")
-        from(sourceSets.main.get().allSource)
-    }
+            pom {
+                name.set("App Search Kotlin")
+                description.set("Elastic App Search Kotlin Client")
+                url.set("https://github.com/itasyurt/app-search-kotlin")
+                packaging = "jar"
 
-    val javadocJar by creating(Jar::class) {
-        dependsOn.add(javadoc)
-        archiveClassifier.set("javadoc")
-        from(javadoc)
-    }
-
-    artifacts {
-        archives(sourcesJar)
-        archives(javadocJar)
-        archives(jar)
-    }
-
-}
-signing {
-    sign(configurations.archives.get())
-}
-
-
-tasks.named<Upload>("uploadArchives") {
-    repositories {
-        withConvention(MavenRepositoryHandlerConvention::class) {
-            mavenDeployer {
-                beforeDeployment { signing.signPom(this) }
-
-                val nexusUsername:String by project
-                val nexusPassword:String by project
-
-                withGroovyBuilder {
-                    "repository"("url" to "https://oss.sonatype.org/service/local/staging/deploy/maven2") {
-                        "authentication"("userName" to nexusUsername, "password" to nexusPassword)
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
                     }
-                    "snapshotRepository"("url" to "https://oss.sonatype.org/content/repositories/snapshots") {
-                        "authentication"("userName" to nexusUsername, "password" to nexusPassword)
+                }
+                developers {
+                    developer {
+                        id.set("itasyurt")
+                        name.set("Ibrahim Tasyurt")
                     }
-                    "pom" {
-                        "project" {
-                            "licenses" {
-                                "license" {
-                                    setProperty("name", "The Apache Software License, Version 2.0")
-                                    setProperty("url", "http://www.apache.org/licenses/LICENSE-2.0.txt")
-                                }
-                            }
+                }
+                scm {
+                    connection.set("scm:git:https://github.com/itasyurt/app-search-kotlin.git")
+                    developerConnection.set("scm:git:ssh://example.com/my-library.git")
+                    url.set("https://github.com/itasyurt/app-search-kotli")
+                }
+            }
+            repositories {
+                maven {
+                    val releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+                    val snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots"
+                    url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+                    credentials {
+                        val nexusUsername:String by project
+                        val nexusPassword:String by project
+                        username = nexusUsername
+                        password = nexusPassword
 
-                            setProperty("packaging", "jar")
-                            setProperty("name", "App Search Kotlin")
-                            setProperty("description", "Elastic App Search Kotlin Client")
-                            setProperty("url","https://github.com/itasyurt/app-search-kotlin/")
-                            "scm" {
-                                setProperty("connection", "scm:git:https://github.com/itasyurt/app-search-kotlin.git")
-                                setProperty("url","https://github.com/itasyurt/app-search-kotlin/")
-                            }
-                            "developers" {
-                                "developer"{
-                                    setProperty("name", "Ibrahim Tasyurt")
-                                }
-                            }
-
-
-                        }
                     }
 
                 }
-
             }
         }
+
+
     }
+}
+
+
+
+signing {
+    sign(publishing.publications["mavenJava"])
 }
