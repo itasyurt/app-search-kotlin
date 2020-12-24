@@ -65,7 +65,6 @@ class HttpgetTests {
 
         Assert.assertEquals(200, resp.statusLine.statusCode)
         Assert.assertEquals("ABC", json.get("name").textValue())
-        Assert.fail()
 
     }
 
