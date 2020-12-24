@@ -1,6 +1,4 @@
-name: App Search Kotlin Release Workflow
-
-on: 
+on:
   pull_request:
     branches:
       - master
