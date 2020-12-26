@@ -8,10 +8,11 @@ This is an open-source JVM client for [Elastic App Search](https://www.elastic.c
 - [Dependencies](#dependencies)
 - [Versioning and Compatibility with App Search](#Versioning and Compatibility)
 - [Usage](#usage)
-- [Running tests](#running-tests)
-- [FAQ](#faq-)
-- [Contribute](#contribute-)
-- [License](#license-)
+- [Implementation Considerations](#Implementation Considerations)
+- [Missing Features](#Missing Features)  
+- [Java Compatibility](#Java Compatibility)
+- [Issues and Contributions](#Issues and Contributions)
+- [License](#License)
 
 ## Getting Started
 
@@ -30,13 +31,16 @@ Following Dependencies are used by app-search-kotlin and added in the classpath.
 * [Jackson](https://github.com/FasterXML/jackson-module-kotlin)
 * [Apache Http Client](https://hc.apache.org/httpcomponents-client-ga/)
 
-## Versioning and Compatibility with App Search
+## Versioning and Compatibility
 
-This client is developed and tested against App Search Version 7.8, but should be compatible with any 8.x version.
+This client is developed and tested against App Search Version 7.8, but should be compatible with any 7.x version.
 
-The suffixes like alpha00X denote the internal versioning 
+The suffixes like `alpha00X denote the internal versioning. 
+
 
 ## Usage
+
+In the following sections you can see how client functionalities can be used. Please refer to official [API Reference](https://www.elastic.co/guide/en/app-search/current/api-reference.html) for a complete documentation of the features.
 
 ### Instantiating a Client
 Documentation assumes tha Elastic App Search is up and running on http://localhost:3002. Following code segment shows how a client can be initialized
@@ -241,3 +245,28 @@ val sug = client.suggestions.suggest(engineName = "f1-drivers", SuggestionsReque
 sug.suggestions.forEach(::println)
 ```
 
+## Implementation Considerations
+* Domain objects are modeled based on the API reference using Jackson annotations as much as possible.
+* Optional parameters are either considered nullable or default arguments (such as pagination).
+* Meta Information is considered as a generic `Map<String,Any>`. 
+
+## Missing Features
+Following features are missing in the current implementation.
+* HTTPS connection
+* API Logs API
+* LogSettings API
+* Analytics API
+* Clicks API
+* Credentials API
+* Meta Engines API
+
+## Java Compatibility
+app-search-kotlin is functionally compliant with Java (11). However the implementation does not take Java Interoperability as the primary concern. 
+For example, default arguments are not provided for Java Clients. A builder or wrapper can be added in the upcoming versions to ensure convenience for Java clients.
+
+## Issues and Contributions
+* You can use the Issues Tab to report issues/ feature requests. 
+* For contribution, feel free to create a PR.
+
+## License
+[Apache 2.0](https://github.com/itasyurt/app-search-kotlin/blob/master/LICENSE.txt)
