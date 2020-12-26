@@ -4,15 +4,15 @@ This is an open-source JVM client for [Elastic App Search](https://www.elastic.c
 
 ## Contents
 
-- [Getting started](#Getting started)
+- [Getting started](#getting-started)
 - [Dependencies](#dependencies)
-- [Versioning and Compatibility with App Search](#Versioning and Compatibility)
+- [Versioning and Compatibility with App Search](#versioning-and-compatibility)
 - [Usage](#usage)
-- [Implementation Considerations](#Implementation Considerations)
-- [Missing Features](#Missing Features)  
-- [Java Compatibility](#Java Compatibility)
-- [Issues and Contributions](#Issues and Contributions)
-- [License](#License)
+- [Implementation Considerations](#implementation-considerations)
+- [Missing Features](#missing-features)  
+- [Java Compatibility](#java-compatibility)
+- [Issues and Contributions](#issues-and-contributions)
+- [License](#license)
 
 ## Getting Started
 
@@ -40,7 +40,8 @@ The suffixes like `alpha00X denote the internal versioning.
 
 ## Usage
 
-In the following sections you can see how client functionalities can be used. Please refer to official [API Reference](https://www.elastic.co/guide/en/app-search/current/api-reference.html) for a complete documentation of the features.
+In the following sections you can see how client functionalities can be used. Formula 1 Drivers are used as the example domain in the code snippeys.
+You canrefer to the  official [API Reference](https://www.elastic.co/guide/en/app-search/current/api-reference.html) for a complete documentation of the features.
 
 ### Instantiating a Client
 Documentation assumes tha Elastic App Search is up and running on http://localhost:3002. Following code segment shows how a client can be initialized
