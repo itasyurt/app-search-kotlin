@@ -270,4 +270,4 @@ For example, default arguments are not provided for Java Clients. A builder or w
 * For contribution, feel free to create a PR.
 
 ## License
-[Apache 2.0](https://github.com/itasyurt/app-search-kotlin/blob/master/LICENSE.txt)
+[Apache 2.0](https://github.com/itasyurt/app-search-kotlin/blob/master/LICENSE)
