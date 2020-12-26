@@ -4,7 +4,7 @@ This is an open-source JVM client for [Elastic App Search](https://www.elastic.c
 
 ## Contents
 
-- [Getting started](#getting-started-)
+- [Getting started](#Getting started)
 - [Dependencies](#dependencies)
 - [Versioning and Compatibility with App Search](#Versioning and Compatibility)
 - [Usage](#usage)
@@ -135,7 +135,7 @@ val request = SearchRequest(query = "Ferrari", facets = facets, filters = filter
 #### Performing a Search
 Once you create a SearchRequest object, you can use the search client to perform a search.
 ```kotlin
-val req:SearchRequest = ...
+val req:SearchRequest = createSearchRequesr() 
 val searchResponse = client.search.search(engineName = "f1-drivers",searchRequest = req)
 searchResponse.results.forEach(::println)
 searchResponse.facets?.forEach(::println)
@@ -197,7 +197,7 @@ val schema = Schema(
 )
 client.schemas.update(engineName = "f1-drivers", schema)
 val schema2 = client.schemas.get(engineName = "f1-drivers")
-schema2.fields.forEach { println("${it.key} ${it.value}"}
+schema2.fields.forEach { println("${it.key} ${it.value}")}
 ```
 
 ### Synonyms
