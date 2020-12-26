@@ -55,16 +55,16 @@ You can see the details on the APIs in the following sections.
 
 ### Engines
 
-#### Create an Engine
+#### Creating an Engine
 ```kotlin
 client.engines.create(Engine("f1-drivers"))
 ```
-### Delete an Engine
+#### Deleting an Engine
 
 ```kotlin
 client.engines.delete("f1-drivers")
 ```
-### Getting Engines
+#### Getting an Engine
 
 ```kotlin
 val engine= client.engines.get("f1-drivers")
