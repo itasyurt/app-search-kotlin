@@ -83,8 +83,8 @@ App Search Documents are considered as Map<String,Any> objects and referred by a
 #### Creating and Patching Documents
 
 ```kotlin
-val doc1= mapOf(Pair("id","HAM"), Pair("name","Lewis Hamilton"))
-val doc2= mapOf(Pair("id","LEC"),Pair("name","Charles Leclerc"))
+val doc1 = mapOf(Pair("id","HAM"), Pair("name","Lewis Hamilton"))
+val doc2 = mapOf(Pair("id","LEC"),Pair("name","Charles Leclerc"))
 client.documents.create(engineName="f1-drivers", doc1, doc2)
 val doc3 = mapOf(Pair("id","LEC"), Pair("dob",1997))
 client.documents.patch(engineName="f1-drivers", doc3)
@@ -110,7 +110,7 @@ val deletionResult = client.documents.delete(engineName = "f1-drivers", "GRO")
 ####  Creating a Search Request
 Search requests be creating a SearchRequest object. Following components can be added in a search request:
 * Query
-* Pagination:
+* Pagination
 * Grouping
 * Facets
 * Filters
@@ -136,7 +136,7 @@ val request = SearchRequest(query = "Ferrari", facets = facets, filters = filter
 #### Performing a Search
 Once you create a SearchRequest object, you can use the search client to perform a search.
 ```kotlin
-val req:SearchRequest = createSearchRequesr() 
+val req:SearchRequest = createSearchRequest() 
 val searchResponse = client.search.search(engineName = "f1-drivers",searchRequest = req)
 searchResponse.results.forEach(::println)
 searchResponse.facets?.forEach(::println)
@@ -146,7 +146,7 @@ SearchResponse consists of results and facets that you can iterate on along with
 #### Performing a Multi-Search
 Multiple search requests can be passed to a multisearch request as a list. Response is a list of SearchResponse objects.
 ```kotlin
-val response =client.search.multisearch(engineName = "f1-drivers", listOf(req1, req2))
+val response = client.search.multisearch(engineName = "f1-drivers", listOf(req1, req2))
 response.forEach {println(it.results)}
 ```
 ### Search Settings
